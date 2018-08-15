@@ -41,7 +41,7 @@ func main(){
 
 		if err != nil{
 			fmt.Println("종료합니다.")
-			end = true	
+			end = true
 		}
 	}
 }
@@ -67,7 +67,7 @@ func divide(num1, num2 int) float64{
 			fmt.Println("Warning! 0으로 나누는 것은 불가능 합니다.")
 		}
 	}()
-	return float_num1/float_num2	
+	return float_num1/float_num2
 }
 
 func sqr(num1 int) float64{
@@ -77,6 +77,7 @@ func sqr(num1 int) float64{
 	is_end := false
 	for is_end == false {
 		d_value = d_value - ( d_value * d_value - float_num1 )	/ (2 * d_value)
+        // go의 기계적 오차허용 범위 적용
 		if math.Abs(pre_value-d_value) > 1e-14{
 			pre_value = d_value
 		}else{
