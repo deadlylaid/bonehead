@@ -17,6 +17,7 @@ func main(){
 
 		v1, oper, v2 := "", "", ""
 
+		fmt.Println("")
 		fmt.Println("연산값을 입력하시오(종료하려면 end를 입력하시오)")
 		fmt.Scanln(&v1, &oper, &v2)
 
@@ -32,9 +33,9 @@ func main(){
 		}else if oper == "/"{
 			fmt.Println(divide(num1, num2))
 		}
-		if err != nil {
+		if err != nil{
 			fmt.Println("종료합니다.")
-			end = true
+			end = true	
 		}
 	}
 }
@@ -52,5 +53,10 @@ func multiply(num1, num2 int) int{
 }
 
 func divide(num1, num2 int) int{
+	defer func(){
+		if err := recover(); err != nil {
+			fmt.Println("Warning! 0으로 나누는 것은 불가능 합니다.")
+		}
+	}()
 	return num1/num2
 }
